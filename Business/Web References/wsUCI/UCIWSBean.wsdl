@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:intf="http://ws.uci.fitbank.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://ws.uci.fitbank.com" targetNamespace="http://ws.uci.fitbank.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ws.uci.fitbank.com">
+      <xsd:element name="processXML">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="pParam" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="processXMLResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="processXMLReturn" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="processXMLRequest">
+    <wsdl:part name="parameters" element="impl:processXML" />
+  </wsdl:message>
+  <wsdl:message name="processXMLResponse">
+    <wsdl:part name="parameters" element="impl:processXMLResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UCIWSBean">
+    <wsdl:operation name="processXML">
+      <wsdl:input name="processXMLRequest" message="impl:processXMLRequest" />
+      <wsdl:output name="processXMLResponse" message="impl:processXMLResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UCIWSBeanSoapBinding" type="impl:UCIWSBean">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="processXML">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="processXMLRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="processXMLResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UCIWSBeanService">
+    <wsdl:port name="UCIWSBean" binding="impl:UCIWSBeanSoapBinding">
+      <wsdlsoap:address location="http://132.147.10.68:8180/UCIWS/services/UCIWSBean" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,75 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterEntorno.master.cs" Inherits="MasterEntorno" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canal Electrónico</title>
+    <link href="../img/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="../css/site.css" rel="stylesheet" />
+    <link href="../css/entorno.css" rel="stylesheet" />
+    <link href="../css/sweetalert.css" rel="stylesheet" />
+    <script src="../js/main.js"></script>
+    <script src="../js/sweetalert.min.js"></script>
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        document.oncontextmenu = function () { return false; }
+        javascript: window.history.forward(1);
+
+    </script>
+    <asp:ContentPlaceHolder ID="ContentHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="content-main">
+            <div id="content-header">
+                <table>
+                    <tr>
+                        <td class="espacioCabecera"></td>
+                        <td class="campoCabecera">
+                            <asp:Label ID="lblUsuario" runat="server" CssClass="lblCabecera">Usuario:</asp:Label>
+                            <asp:TextBox ID="txtUsuario" runat="server" CssClass="txtCabecera" ReadOnly="true"></asp:TextBox>
+                        </td>
+                        <td class="campoCabecera">
+                            <asp:Label ID="lblRol" runat="server" CssClass="lblCabecera">Rol:</asp:Label>
+                            <asp:TextBox ID="txtRol" runat="server" CssClass="txtCabecera" ReadOnly="true"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="espacioCabecera"></td>
+                        <td class="campoCabecera">
+                            <asp:Label ID="lblTerminal" runat="server" CssClass="lblCabecera">Terminal:</asp:Label>
+                            <asp:TextBox ID="txtTerminal" runat="server" CssClass="txtCabecera" ReadOnly="true"></asp:TextBox>
+                        </td>
+                        <td class="campoCabecera">
+                            <asp:Label ID="lblAgencia" runat="server" CssClass="lblCabecera">Agencia: </asp:Label>
+                            <asp:TextBox ID="txtAgencia" runat="server" CssClass="txtCabecera" ReadOnly="true"></asp:TextBox>
+                        </td>
+                    </tr>
+                </table>
+                <asp:PlaceHolder ID="phCabecera" runat="server"></asp:PlaceHolder>
+            </div>
+            <div id="content-title">
+                <div id="content-buttons">
+                    <asp:ImageButton ID="btnSalir" runat="server" CssClass="button-bar" ToolTip="Salir" AlternateText="Salir" ImageAlign="left" ImageUrl="~/img/iconos/salir.png" OnClick="btnSalir_Click" />
+                    <img class="button-bar" src="../img/iconos/nuevaventana.png" alt="ventana" title="Nueva Ventana" onclick="entornoNuevaVentana();" />
+                </div>
+                <div id="content-menu">
+                    <asp:PlaceHolder ID="phMenu" runat="server"></asp:PlaceHolder>
+                </div>
+            </div>
+            <div id="content-form">
+                <asp:ContentPlaceHolder ID="Content" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div id="content-footer">
+                <asp:PlaceHolder ID="phBarraEstado" runat="server"></asp:PlaceHolder>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

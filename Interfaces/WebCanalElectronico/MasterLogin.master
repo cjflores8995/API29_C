@@ -1,0 +1,38 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterLogin.master.cs" Inherits="MasterLogin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canal Electrónico</title>
+    <link href="img/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/login.css" rel="stylesheet" />
+    <link href="css/sweetalert.css" rel="stylesheet" />
+    <link href="css/default.css" rel="stylesheet" />
+    <link href="css/component.css" rel="stylesheet" />
+    <script src="js/main.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        document.oncontextmenu = function () { return false; }
+        javascript: window.history.forward(1);
+    </script>    
+</head>
+<body>
+    <form runat="server">
+        <div id="content-main">
+            <div id="content">
+                <div id="content-title"></div>
+                <div id="content-fields">
+                    <asp:ContentPlaceHolder ID="Content" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

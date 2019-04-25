@@ -1,0 +1,98 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessData", "AccessData\AccessData.csproj", "{803B91AC-08CD-46EE-8BF5-3D0CA3CF9359}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{1EFF97CE-3403-430D-A47D-617E03DE5285}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interfaces", "Interfaces", "{7EBC5A19-BA75-4E13-9DEF-936301A54D98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchFacturacion", "Interfaces\BatchFacturacion\BatchFacturacion.csproj", "{3C05F1ED-7453-4B05-94E3-FCBD9D50DC68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchProcesos", "Interfaces\BatchProcesos\BatchProcesos.csproj", "{FD2A3F5D-C2ED-40A5-8621-F8684DFCFF7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchCompensacion", "Interfaces\BatchCompensacion\BatchCompensacion.csproj", "{FD7FFB41-0957-41DF-801D-FEA746ED6B87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchNomina", "Interfaces\BatchNomina\BatchNomina.csproj", "{E4E1FDB5-797B-4BEE-B0EB-F1A486BAC9B6}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "app29", "http://localhost/app29", "{5FCAD78A-E3C9-48B3-AD18-0D242D681CD9}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "false"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{1eff97ce-3403-430d-a47d-617e03de5285}|Business.dll;{803B91AC-08CD-46EE-8BF5-3D0CA3CF9359}|AccessData.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/app29"
+		Debug.AspNetCompiler.PhysicalPath = "Interfaces\WebCanalElectronico\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\app29\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/app29"
+		Release.AspNetCompiler.PhysicalPath = "Interfaces\WebCanalElectronico\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\app29\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "Interfaces\WebCanalElectronico\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encriptor", "Interfaces\Encriptor\Encriptor.csproj", "{B41B6661-30F4-4B9A-BE02-83EF5E281093}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{803B91AC-08CD-46EE-8BF5-3D0CA3CF9359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{803B91AC-08CD-46EE-8BF5-3D0CA3CF9359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{803B91AC-08CD-46EE-8BF5-3D0CA3CF9359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{803B91AC-08CD-46EE-8BF5-3D0CA3CF9359}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EFF97CE-3403-430D-A47D-617E03DE5285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EFF97CE-3403-430D-A47D-617E03DE5285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EFF97CE-3403-430D-A47D-617E03DE5285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EFF97CE-3403-430D-A47D-617E03DE5285}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C05F1ED-7453-4B05-94E3-FCBD9D50DC68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C05F1ED-7453-4B05-94E3-FCBD9D50DC68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C05F1ED-7453-4B05-94E3-FCBD9D50DC68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C05F1ED-7453-4B05-94E3-FCBD9D50DC68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD2A3F5D-C2ED-40A5-8621-F8684DFCFF7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD2A3F5D-C2ED-40A5-8621-F8684DFCFF7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD2A3F5D-C2ED-40A5-8621-F8684DFCFF7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD2A3F5D-C2ED-40A5-8621-F8684DFCFF7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD2A3F5D-C2ED-40A5-8621-F8684DFCFF7A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FD7FFB41-0957-41DF-801D-FEA746ED6B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD7FFB41-0957-41DF-801D-FEA746ED6B87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD7FFB41-0957-41DF-801D-FEA746ED6B87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD7FFB41-0957-41DF-801D-FEA746ED6B87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4E1FDB5-797B-4BEE-B0EB-F1A486BAC9B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4E1FDB5-797B-4BEE-B0EB-F1A486BAC9B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4E1FDB5-797B-4BEE-B0EB-F1A486BAC9B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4E1FDB5-797B-4BEE-B0EB-F1A486BAC9B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FCAD78A-E3C9-48B3-AD18-0D242D681CD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FCAD78A-E3C9-48B3-AD18-0D242D681CD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FCAD78A-E3C9-48B3-AD18-0D242D681CD9}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FCAD78A-E3C9-48B3-AD18-0D242D681CD9}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{B41B6661-30F4-4B9A-BE02-83EF5E281093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B41B6661-30F4-4B9A-BE02-83EF5E281093}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B41B6661-30F4-4B9A-BE02-83EF5E281093}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B41B6661-30F4-4B9A-BE02-83EF5E281093}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3C05F1ED-7453-4B05-94E3-FCBD9D50DC68} = {7EBC5A19-BA75-4E13-9DEF-936301A54D98}
+		{FD2A3F5D-C2ED-40A5-8621-F8684DFCFF7A} = {7EBC5A19-BA75-4E13-9DEF-936301A54D98}
+		{FD7FFB41-0957-41DF-801D-FEA746ED6B87} = {7EBC5A19-BA75-4E13-9DEF-936301A54D98}
+		{E4E1FDB5-797B-4BEE-B0EB-F1A486BAC9B6} = {7EBC5A19-BA75-4E13-9DEF-936301A54D98}
+		{5FCAD78A-E3C9-48B3-AD18-0D242D681CD9} = {7EBC5A19-BA75-4E13-9DEF-936301A54D98}
+		{B41B6661-30F4-4B9A-BE02-83EF5E281093} = {7EBC5A19-BA75-4E13-9DEF-936301A54D98}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {58846CB7-AECF-4340-843E-65D64748B163}
+	EndGlobalSection
+EndGlobal

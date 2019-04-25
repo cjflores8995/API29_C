@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Business.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Business_wsS29_uciMethods" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/wsFitSwitch/uciMethods.asmx</Value>
+    </Setting>
+    <Setting Name="Business_wsCompers_WebService29Octubre" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://webservice.apaconsultores.com/WebService29Octubre.asmx</Value>
+    </Setting>
+    <Setting Name="Business_wsUCI_UCIWSBeanService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://132.147.10.68:8180/UCIWS/services/UCIWSBean</Value>
+    </Setting>
+    <Setting Name="Business_wsInvestor_WSEstructuras" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://132.147.10.11/TesoreriaWS29/WSEstructuras.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

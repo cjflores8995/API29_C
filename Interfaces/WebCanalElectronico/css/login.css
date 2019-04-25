@@ -1,0 +1,42 @@
+body {
+    background-color: #F5F5F5;
+    background-size: cover;
+    margin: 0px auto;
+}
+
+#content-main {
+    width: 50%;
+    margin: 0px auto;
+    padding-top: 80px;
+}
+
+#content {
+    -webkit-border-radius: 0px;
+    background: #E0DED8;
+    border: 1px solid #ccc;
+    padding: 25px 25px 25px 25px;
+    overflow: hidden;
+    margin: 0;
+    border: 0;
+}
+
+#content-title {
+    background-image: url(../img/logoCanalElectronico.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+    height: 150px;
+    text-align: right;
+    vertical-align: middle;
+}
+
+#content-fields {
+    font-size: medium;
+    display: table-cell;
+    padding-top: 20px;
+}
+
+p {
+    text-align: left;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}

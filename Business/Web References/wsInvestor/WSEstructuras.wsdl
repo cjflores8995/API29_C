@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://IDCE.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://IDCE.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://IDCE.com/">
+      <s:element name="GetI01">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fecha" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetI01Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetI01Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetI02">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fecha" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetI02Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetI02Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRML">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fechaInicio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fechaFin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRMLResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetI01SoapIn">
+    <wsdl:part name="parameters" element="tns:GetI01" />
+  </wsdl:message>
+  <wsdl:message name="GetI01SoapOut">
+    <wsdl:part name="parameters" element="tns:GetI01Response" />
+  </wsdl:message>
+  <wsdl:message name="GetI02SoapIn">
+    <wsdl:part name="parameters" element="tns:GetI02" />
+  </wsdl:message>
+  <wsdl:message name="GetI02SoapOut">
+    <wsdl:part name="parameters" element="tns:GetI02Response" />
+  </wsdl:message>
+  <wsdl:message name="GetRMLSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRML" />
+  </wsdl:message>
+  <wsdl:message name="GetRMLSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRMLResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WSEstructurasSoap">
+    <wsdl:operation name="GetI01">
+      <wsdl:input message="tns:GetI01SoapIn" />
+      <wsdl:output message="tns:GetI01SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetI02">
+      <wsdl:input message="tns:GetI02SoapIn" />
+      <wsdl:output message="tns:GetI02SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRML">
+      <wsdl:input message="tns:GetRMLSoapIn" />
+      <wsdl:output message="tns:GetRMLSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSEstructurasSoap" type="tns:WSEstructurasSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetI01">
+      <soap:operation soapAction="http://IDCE.com/GetI01" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetI02">
+      <soap:operation soapAction="http://IDCE.com/GetI02" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRML">
+      <soap:operation soapAction="http://IDCE.com/GetRML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSEstructurasSoap12" type="tns:WSEstructurasSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetI01">
+      <soap12:operation soapAction="http://IDCE.com/GetI01" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetI02">
+      <soap12:operation soapAction="http://IDCE.com/GetI02" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRML">
+      <soap12:operation soapAction="http://IDCE.com/GetRML" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSEstructuras">
+    <wsdl:port name="WSEstructurasSoap" binding="tns:WSEstructurasSoap">
+      <soap:address location="http://132.147.10.11/TesoreriaWS29/WSEstructuras.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WSEstructurasSoap12" binding="tns:WSEstructurasSoap12">
+      <soap12:address location="http://132.147.10.11/TesoreriaWS29/WSEstructuras.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

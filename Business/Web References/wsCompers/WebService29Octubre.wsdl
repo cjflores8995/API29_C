@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="InsertaOActualizaArea">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AreaSec" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="AreaSecPadre" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="AreaNombre" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AreaNivel" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="AreaEstado" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertaOActualizaAreaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertaOActualizaAreaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginInfo" type="tns:LoginInfo" />
+      <s:complexType name="LoginInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="InsertaOActualizaCargo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CargoSec" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CargoNombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CargoEstado" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertaOActualizaCargoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertaOActualizaCargoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertaOActualizaPersona">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PersonaSec" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="AreaSec" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CargoSec" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="PersonaNombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PersonaApellido" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PersonaSueldo" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="PersonaCI" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PersonaSupervisor" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="PersonaFechaNacimiento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PersonaFechaIngreso" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PersonaGenero" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="PersonaDireccion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PersonaTelefonoDomicilio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PersonaTelefonoMovil" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PersonaTelefonoLaboral" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PersonaTelefonoExtension" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PersonaCodigo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PersonaCorreo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PersonaEstado" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertaOActualizaPersonaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertaOActualizaPersonaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InsertaOActualizaAreaSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertaOActualizaArea" />
+  </wsdl:message>
+  <wsdl:message name="InsertaOActualizaAreaSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertaOActualizaAreaResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertaOActualizaAreaLoginInfo">
+    <wsdl:part name="LoginInfo" element="tns:LoginInfo" />
+  </wsdl:message>
+  <wsdl:message name="InsertaOActualizaCargoSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertaOActualizaCargo" />
+  </wsdl:message>
+  <wsdl:message name="InsertaOActualizaCargoSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertaOActualizaCargoResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertaOActualizaCargoLoginInfo">
+    <wsdl:part name="LoginInfo" element="tns:LoginInfo" />
+  </wsdl:message>
+  <wsdl:message name="InsertaOActualizaPersonaSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertaOActualizaPersona" />
+  </wsdl:message>
+  <wsdl:message name="InsertaOActualizaPersonaSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertaOActualizaPersonaResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertaOActualizaPersonaLoginInfo">
+    <wsdl:part name="LoginInfo" element="tns:LoginInfo" />
+  </wsdl:message>
+  <wsdl:portType name="WebService29OctubreSoap">
+    <wsdl:operation name="InsertaOActualizaArea">
+      <wsdl:input message="tns:InsertaOActualizaAreaSoapIn" />
+      <wsdl:output message="tns:InsertaOActualizaAreaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaOActualizaCargo">
+      <wsdl:input message="tns:InsertaOActualizaCargoSoapIn" />
+      <wsdl:output message="tns:InsertaOActualizaCargoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaOActualizaPersona">
+      <wsdl:input message="tns:InsertaOActualizaPersonaSoapIn" />
+      <wsdl:output message="tns:InsertaOActualizaPersonaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService29OctubreSoap" type="tns:WebService29OctubreSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertaOActualizaArea">
+      <soap:operation soapAction="http://tempuri.org/InsertaOActualizaArea" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InsertaOActualizaAreaLoginInfo" part="LoginInfo" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:InsertaOActualizaAreaLoginInfo" part="LoginInfo" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertaOActualizaCargo">
+      <soap:operation soapAction="http://tempuri.org/InsertaOActualizaCargo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InsertaOActualizaCargoLoginInfo" part="LoginInfo" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:InsertaOActualizaCargoLoginInfo" part="LoginInfo" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertaOActualizaPersona">
+      <soap:operation soapAction="http://tempuri.org/InsertaOActualizaPersona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InsertaOActualizaPersonaLoginInfo" part="LoginInfo" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:InsertaOActualizaPersonaLoginInfo" part="LoginInfo" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService29OctubreSoap12" type="tns:WebService29OctubreSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertaOActualizaArea">
+      <soap12:operation soapAction="http://tempuri.org/InsertaOActualizaArea" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InsertaOActualizaAreaLoginInfo" part="LoginInfo" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InsertaOActualizaAreaLoginInfo" part="LoginInfo" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertaOActualizaCargo">
+      <soap12:operation soapAction="http://tempuri.org/InsertaOActualizaCargo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InsertaOActualizaCargoLoginInfo" part="LoginInfo" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InsertaOActualizaCargoLoginInfo" part="LoginInfo" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertaOActualizaPersona">
+      <soap12:operation soapAction="http://tempuri.org/InsertaOActualizaPersona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InsertaOActualizaPersonaLoginInfo" part="LoginInfo" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InsertaOActualizaPersonaLoginInfo" part="LoginInfo" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService29Octubre">
+    <wsdl:port name="WebService29OctubreSoap" binding="tns:WebService29OctubreSoap">
+      <soap:address location="https://webservice.apaconsultores.com/WebService29Octubre.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService29OctubreSoap12" binding="tns:WebService29OctubreSoap12">
+      <soap12:address location="https://webservice.apaconsultores.com/WebService29Octubre.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
