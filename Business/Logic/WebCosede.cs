@@ -419,6 +419,37 @@ namespace Business
                     table2Cell.HorizontalAlignment = Element.ALIGN_LEFT;
                     table2.AddCell(table2Cell);
 
+                    //----------------------
+                    table2Cell = new PdfPCell(new Phrase("CAJERO:", _FontText));
+                    table2Cell.BorderWidth = 0;
+                    table2Cell.BorderWidthBottom = 0;
+                    table2Cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table2.AddCell(table2Cell);
+
+                    table2Cell = new PdfPCell(new Phrase(beneficiario.CUSUARIONOMBRELEGAL, _FontText));
+                    table2Cell.BorderWidth = 0;
+                    table2Cell.BorderWidthBottom = 0;
+                    table2Cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table2.AddCell(table2Cell);
+
+                    //----------------------
+
+                    //----------------------
+                    table2Cell = new PdfPCell(new Phrase("SERVICIO:", _FontText));
+                    table2Cell.BorderWidth = 0;
+                    table2Cell.BorderWidthBottom = 0;
+                    table2Cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table2.AddCell(table2Cell);
+
+                    table2Cell = new PdfPCell(new Phrase("PAGO DEL SEGURO", _FontText));
+                    table2Cell.BorderWidth = 0;
+                    table2Cell.BorderWidthBottom = 0;
+                    table2Cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    table2.AddCell(table2Cell);
+
+                    //----------------------
+
+
                     doc.Add(table2);
 
                     doc.Add(Chunk.NEWLINE);
@@ -614,6 +645,7 @@ namespace Business
 
                     doc.Close();
                     writer.Close();
+
 
                     #endregion construyePDF
 

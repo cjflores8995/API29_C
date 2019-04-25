@@ -19,6 +19,66 @@ namespace Business
     {
         public static StreamWriter file = null;
 
+        public CanalRespuesta GeneraConciliacion(DateTime finicio, DateTime ffin, string path, out string archivoZip)
+        {
+            #region Variables
+
+            CanalRespuesta resp = new CanalRespuesta();
+            string archivoDetalle = string.Empty;
+            string archivoCabecera = string.Empty;
+            string archivoValidacion = string.Empty;
+            Int32 totalClientes = 0;
+            Int32 totalProductos = 0;
+            string error = string.Empty;
+            archivoZip = string.Empty;
+
+
+            #endregion Variables
+
+            try
+            {
+
+
+                /*UAFDetalle(finicio, path, out error, out archivoDetalle, out totalClientes, out totalProductos);
+                if (string.IsNullOrEmpty(error) && !string.IsNullOrEmpty(archivoDetalle))
+                {
+                    UAFValidacion(finicio, path, archivoDetalle, out archivoValidacion);
+                    UAFCabecera(finicio, path, archivoDetalle, totalClientes, totalProductos, out error, out archivoCabecera);
+                    if (string.IsNullOrEmpty(error) && !string.IsNullOrEmpty(archivoCabecera))
+                    {
+                        archivoZip = "UAF_" + finicio.ToString("yyyyMMdd") + ".zip";
+                        ZipFile zip = new ZipFile();
+                        zip.AddFile(path + archivoDetalle, "");
+                        zip.AddFile(path + archivoCabecera, "");
+                        if (!string.IsNullOrEmpty(archivoValidacion))
+                            zip.AddFile(path + archivoValidacion, "");
+                        zip.Save(path + archivoZip);
+
+                        resp.CError = "000";
+                        resp.DError = "ESTRUCTURA GENERADA CORRECTAMENTE";
+                    }
+                }*/
+
+                string[] lines = { "Primera linea", "segunda linea", "tercera linea", "cuarta linea", "quinta linea" };
+
+
+                System.IO.File.WriteAllLines(path + "IN_1188_" + ffin.ToString("yyyyMMdd") + ".dat", lines);
+
+
+                resp.CError = "000";
+                resp.DError = "ESTRUCTURA GENERADA CORRECTAMENTE";
+
+            }
+            catch (Exception ex)
+            {
+                resp.CError = "999";
+                resp.DError = "ERROR EN SISTEMA: " + Util.ReturnExceptionString(ex);
+                Logging.EscribirLog(MethodBase.GetCurrentMethod().DeclaringType + "::" + MethodBase.GetCurrentMethod().Name + " ", ex, "ERR");
+            }
+            return resp;
+        }
+
+
         public CanalRespuesta GeneraUAF(DateTime fcorte, string path, out string archivoZip)
         {
             #region Variables

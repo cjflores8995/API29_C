@@ -33,6 +33,7 @@ namespace Business
         public Int32? CSUCURSAL { get; set; }
         public Int32? COFICINA { get; set; }
         public String CTERMINAL { get; set; }
+        public string CUSUARIONOMBRELEGAL { get; set; }
 
         public string lnk { get; set; }
 
@@ -168,6 +169,7 @@ namespace Business
                 query.Append(" FPAGOCOSEDE, ");
                 query.Append(" FPAGOREAL, ");
                 query.Append(" CUSUARIOPAGO, ");
+                query.Append("(SELECT NOMBRELEGAL FROM FITBANK.TPERSONA WHERE FHASTA = FNCFHASTA AND CPERSONA = (SELECT CPERSONA FROM FITBANK.TUSUARIOS WHERE CUSUARIO = CUSUARIOPAGO AND FHASTA > SYSDATE AND ROWNUM = 1 )) CUSUARIONOMBRELEGAL,");
                 query.Append(" CSUCURSAL, ");
                 query.Append(" COFICINA, ");
                 query.Append(" CTERMINAL ");
@@ -210,6 +212,7 @@ namespace Business
                             FPAGOCOSEDE = Util.ConvertirFecha(reader["FPAGOCOSEDE"].ToString()),
                             FPAGOREAL = Util.ConvertirFecha(reader["FPAGOREAL"].ToString()),
                             CUSUARIOPAGO = reader["CUSUARIOPAGO"].ToString(),
+                            CUSUARIONOMBRELEGAL = reader["CUSUARIONOMBRELEGAL"].ToString(),
                             CSUCURSAL = Util.ConvertirNumero(reader["CSUCURSAL"].ToString()),
                             COFICINA = Util.ConvertirNumero(reader["COFICINA"].ToString()),
                             CTERMINAL = reader["CTERMINAL"].ToString()
@@ -268,26 +271,15 @@ namespace Business
                 query.Append(" CTERMINAL ");
                 query.Append(" FROM TCOSPAGOS ");
                 query.Append(" WHERE IDENTIFICACION = :IDENTIFICACION ");
-                //query.Append(" WHERE TRUNC(FPAGOREAL) = TRUNC(:FPAGOREAL) ");
-                //query.Append(" AND CUSUARIOPAGO = :CUSUARIOPAGO ");
-
-                /*if (!string.IsNullOrEmpty(identificacion))
-                {
-                    query.Append(" AND IDENTIFICACION = :IDENTIFICACION ");
-                }*/
 
                 comando.Connection = ado.oraConexion;
                 comando.CommandType = CommandType.Text;
                 comando.CommandText = query.ToString();
 
-                comando.Parameters.Add(new OracleParameter("IDENTIFICACION", OracleDbType.Varchar2, identificacion, ParameterDirection.Input));
-
-                //comando.Parameters.Add(new OracleParameter("FPAGOREAL", OracleDbType.Date, fecha, ParameterDirection.Input));
-                //comando.Parameters.Add(new OracleParameter("CUSUARIOPAGO", OracleDbType.Varchar2, cusuario, ParameterDirection.Input));
-                /*if (!string.IsNullOrEmpty(identificacion))
+                if (!string.IsNullOrEmpty(identificacion))
                 {
                     comando.Parameters.Add(new OracleParameter("IDENTIFICACION", OracleDbType.Varchar2, identificacion, ParameterDirection.Input));
-                }*/
+                }
 
                 #endregion armacomando
 
