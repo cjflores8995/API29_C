@@ -27,16 +27,25 @@ namespace Business
             string archivoDetalle = string.Empty;
             string archivoCabecera = string.Empty;
             string archivoValidacion = string.Empty;
-            Int32 totalClientes = 0;
-            Int32 totalProductos = 0;
+            /*Int32 totalClientes = 0;
+            Int32 totalProductos = 0;*/
             string error = string.Empty;
             archivoZip = string.Empty;
+
+            //Variables de conciliación
+            string codigoEntidad = ConfigurationManager.AppSettings["uafCodigoInstitucion"];
+            DateTime fechaHoraGeneracion = DateTime.Now;
+            double valorTotal = 0;
+            int numeroTransacciones = 0;
+            string cabecera = string.Empty;
 
 
             #endregion Variables
 
             try
             {
+
+
 
 
                 /*UAFDetalle(finicio, path, out error, out archivoDetalle, out totalClientes, out totalProductos);
@@ -59,10 +68,10 @@ namespace Business
                     }
                 }*/
 
-                string[] lines = { "Primera linea", "segunda linea", "tercera linea", "cuarta linea", "quinta linea" };
+                string cabecera = String.Format("{0}_{1}_{2}", "1", "2", "3");
 
 
-                System.IO.File.WriteAllLines(path + "IN_1188_" + ffin.ToString("yyyyMMdd") + ".dat", lines);
+                System.IO.File.WriteAllLines(path + "IN_1122_" + ffin.ToString("yyyyMMdd") + ".dat", cabecera);
 
 
                 resp.CError = "000";

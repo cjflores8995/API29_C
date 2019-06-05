@@ -117,8 +117,8 @@ public partial class formularios_0029 : System.Web.UI.Page
                 path = ConfigurationManager.AppSettings["pathConciliacion"].Trim().ToString();// + string.Format(ConfigurationManager.AppSettings["pathArchivosEstructuras"].Trim(), "UAF", DateTime.Now.ToString("yyyyMMddHHmmss"));
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
-                Thread.Sleep(5000);
-                respuesta = est.GeneraConciliacion(Convert.ToDateTime(txtFechaInicio.Text), Convert.ToDateTime(txtFechaFin.Text), path, out nombreZip);
+                //Thread.Sleep(5000);
+                //respuesta = est.GeneraConciliacion(Convert.ToDateTime(txtFechaInicio.Text), Convert.ToDateTime(txtFechaFin.Text), path, out nombreZip);
 
                 duracion.Value.Stop();
                 totalDuracion = duracion.Value.Elapsed;

@@ -81,7 +81,7 @@
                                 <PagerStyle CssClass="paginacion" />
                                 <AlternatingRowStyle CssClass="filaAlterna" />
                                 <Columns>
-                                    <asp:BoundField DataField="DOCUMENTOFACTURACION" HeaderText="Tipo Comprobante">
+                                    <asp:BoundField DataField="TIPODOCUMENTO" HeaderText="Tipo Comprobante">
                                         <HeaderStyle HorizontalAlign="Left" />
                                         <ItemStyle HorizontalAlign="Left" />
                                     </asp:BoundField>
@@ -93,7 +93,7 @@
                                         <HeaderStyle HorizontalAlign="Left" />
                                         <ItemStyle HorizontalAlign="Left" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="FECHAEMISION" DataFormatString="{0:dd/MM/yyyy}" HeaderText="Fecha Emisión">
+                                    <asp:BoundField DataField="FEMISION" DataFormatString="{0:dd/MM/yyyy}" HeaderText="Fecha Emisión">
                                         <HeaderStyle HorizontalAlign="Left" />
                                         <ItemStyle HorizontalAlign="Left" />
                                     </asp:BoundField>
