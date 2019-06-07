@@ -19,73 +19,84 @@ namespace Business
     {
         public static StreamWriter file = null;
 
-        public CanalRespuesta GeneraConciliacion(DateTime finicio, DateTime ffin, string path, out string archivoZip)
+        /*public CanalRespuesta GeneraConciliacion(DateTime finicio, DateTime ffin, string path, out string archivoZip)
         {
             #region Variables
 
             CanalRespuesta resp = new CanalRespuesta();
             string archivoDetalle = string.Empty;
             string archivoCabecera = string.Empty;
-            string archivoValidacion = string.Empty;
-            /*Int32 totalClientes = 0;
-            Int32 totalProductos = 0;*/
-            string error = string.Empty;
-            archivoZip = string.Empty;
-
-            //Variables de conciliación
-            string codigoEntidad = ConfigurationManager.AppSettings["uafCodigoInstitucion"];
-            DateTime fechaHoraGeneracion = DateTime.Now;
-            double valorTotal = 0;
-            int numeroTransacciones = 0;
-            string cabecera = string.Empty;
+            string archivoValidacion = string.Empty;*/
 
 
-            #endregion Variables
 
-            try
+        /*Int32 totalClientes = 0;
+        Int32 totalProductos = 0;*/
+
+
+
+        /*string error = string.Empty;
+        archivoZip = string.Empty;
+
+        //Variables de conciliación
+        string codigoEntidad = ConfigurationManager.AppSettings["uafCodigoInstitucion"];
+        DateTime fechaHoraGeneracion = DateTime.Now;
+        double valorTotal = 0;
+        int numeroTransacciones = 0;
+        string cabecera = string.Empty;
+
+
+        #endregion Variables
+
+        try
+        {
+
+
+
+
+            /*UAFDetalle(finicio, path, out error, out archivoDetalle, out totalClientes, out totalProductos);
+            if (string.IsNullOrEmpty(error) && !string.IsNullOrEmpty(archivoDetalle))
             {
-
-
-
-
-                /*UAFDetalle(finicio, path, out error, out archivoDetalle, out totalClientes, out totalProductos);
-                if (string.IsNullOrEmpty(error) && !string.IsNullOrEmpty(archivoDetalle))
+                UAFValidacion(finicio, path, archivoDetalle, out archivoValidacion);
+                UAFCabecera(finicio, path, archivoDetalle, totalClientes, totalProductos, out error, out archivoCabecera);
+                if (string.IsNullOrEmpty(error) && !string.IsNullOrEmpty(archivoCabecera))
                 {
-                    UAFValidacion(finicio, path, archivoDetalle, out archivoValidacion);
-                    UAFCabecera(finicio, path, archivoDetalle, totalClientes, totalProductos, out error, out archivoCabecera);
-                    if (string.IsNullOrEmpty(error) && !string.IsNullOrEmpty(archivoCabecera))
-                    {
-                        archivoZip = "UAF_" + finicio.ToString("yyyyMMdd") + ".zip";
-                        ZipFile zip = new ZipFile();
-                        zip.AddFile(path + archivoDetalle, "");
-                        zip.AddFile(path + archivoCabecera, "");
-                        if (!string.IsNullOrEmpty(archivoValidacion))
-                            zip.AddFile(path + archivoValidacion, "");
-                        zip.Save(path + archivoZip);
+                    archivoZip = "UAF_" + finicio.ToString("yyyyMMdd") + ".zip";
+                    ZipFile zip = new ZipFile();
+                    zip.AddFile(path + archivoDetalle, "");
+                    zip.AddFile(path + archivoCabecera, "");
+                    if (!string.IsNullOrEmpty(archivoValidacion))
+                        zip.AddFile(path + archivoValidacion, "");
+                    zip.Save(path + archivoZip);
 
-                        resp.CError = "000";
-                        resp.DError = "ESTRUCTURA GENERADA CORRECTAMENTE";
-                    }
-                }*/
-
-                string cabecera = String.Format("{0}_{1}_{2}", "1", "2", "3");
+                    resp.CError = "000";
+                    resp.DError = "ESTRUCTURA GENERADA CORRECTAMENTE";
+                }
+            }*/
 
 
-                System.IO.File.WriteAllLines(path + "IN_1122_" + ffin.ToString("yyyyMMdd") + ".dat", cabecera);
 
 
-                resp.CError = "000";
-                resp.DError = "ESTRUCTURA GENERADA CORRECTAMENTE";
 
-            }
-            catch (Exception ex)
-            {
-                resp.CError = "999";
-                resp.DError = "ERROR EN SISTEMA: " + Util.ReturnExceptionString(ex);
-                Logging.EscribirLog(MethodBase.GetCurrentMethod().DeclaringType + "::" + MethodBase.GetCurrentMethod().Name + " ", ex, "ERR");
-            }
-            return resp;
+        /*
+            string cabecera = String.Format("{0}_{1}_{2}", "1", "2", "3");
+
+
+            System.IO.File.WriteAllLines(path + "IN_1122_" + ffin.ToString("yyyyMMdd") + ".dat", cabecera);
+
+
+            resp.CError = "000";
+            resp.DError = "ESTRUCTURA GENERADA CORRECTAMENTE";
+
         }
+        catch (Exception ex)
+        {
+            resp.CError = "999";
+            resp.DError = "ERROR EN SISTEMA: " + Util.ReturnExceptionString(ex);
+            Logging.EscribirLog(MethodBase.GetCurrentMethod().DeclaringType + "::" + MethodBase.GetCurrentMethod().Name + " ", ex, "ERR");
+        }
+        return resp;
+    }*/
 
 
         public CanalRespuesta GeneraUAF(DateTime fcorte, string path, out string archivoZip)
@@ -199,11 +210,16 @@ namespace Business
                                         uaf.CLI[x].PRO[y].TRX[z].MND = trx.MND;
                                         uaf.CLI[x].PRO[y].TRX[z].TTR = trx.TTR;
                                         uaf.CLI[x].PRO[y].TRX[z].NOB = trx.NOB;
-                                        uaf.CLI[x].PRO[y].TRX[z].PDO = trx.PDO;
-                                        uaf.CLI[x].PRO[y].TRX[z].IDO = trx.IDO;
-                                        uaf.CLI[x].PRO[y].TRX[z].COB = trx.COB;
-                                        uaf.CLI[x].PRO[y].TRX[z].CAT = trx.CAT;
-                                        uaf.CLI[x].PRO[y].TRX[z].CCT = trx.CCT;
+                                        uaf.CLI[x].PRO[y].TRX[z].CSW = trx.CSW;
+                                        uaf.CLI[x].PRO[y].TRX[z].ISD = trx.ISD.Value.ToString();
+
+                                        uaf.CLI[x].PRO[y].TRX[z].BNC = new BANCO[1];
+                                        uaf.CLI[x].PRO[y].TRX[z].BNC[0] = new BANCO();
+                                        uaf.CLI[x].PRO[y].TRX[z].BNC[0].IDO = trx.IDO;
+                                        uaf.CLI[x].PRO[y].TRX[z].BNC[0].COB = trx.COB;
+                                        uaf.CLI[x].PRO[y].TRX[z].BNC[0].PDO = trx.PDO;
+                                        uaf.CLI[x].PRO[y].TRX[z].BNC[0].CAT = trx.CAT;
+                                        uaf.CLI[x].PRO[y].TRX[z].BNC[0].CCT = trx.CCT;
                                         z++;
                                     }
                                 }
@@ -277,6 +293,7 @@ namespace Business
                     cab.CLI = totalClientes.ToString();
                     cab.PRO = totalProductos.ToString();
                     cab.TRA = transaccion.TRX.Value.ToString();
+                    cab.TRB = transaccion.TRX.Value.ToString();
                     cab.TDE = transaccion.TDE.Value.ToString();
                     cab.TCR = transaccion.TCR.Value.ToString();
                     cab.TEF = transaccion.TEF.Value.ToString();
@@ -1523,7 +1540,7 @@ namespace Business
                         }
                         #endregion armaEstructura
                         break;
-                    #endregion F01
+                        #endregion F01
                 }
                 #endregion ProcesaEstructura
                 #region GuardaEstructura
@@ -3090,6 +3107,7 @@ namespace Business
             private string CLIField;
             private string PROField;
             private string TRAField;
+            private string TRBField;
             private string TDEField;
             private string TCRField;
             private string TEFField;
@@ -3187,6 +3205,18 @@ namespace Business
                 }
             }
 
+            [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+            public string TRB
+            {
+                get
+                {
+                    return this.TRBField;
+                }
+                set
+                {
+                    this.TRBField = value;
+                }
+            }
             [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
             public string TDE
             {
@@ -3539,11 +3569,14 @@ namespace Business
             private string MNDField;
             private string TTRField;
             private string NOBField;
-            private string PDOField;
-            private string IDOField;
-            private string COBField;
-            private string CATField;
-            private string CCTField;
+            //private string PDOField;
+            //private string IDOField;
+            //private string COBField;
+            //private string CATField;
+            //private string CCTField;
+            private string CSWField;
+            private string ISDField;
+            private BANCO[] BNCField;
 
             [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
             public string FTR
@@ -3676,17 +3709,58 @@ namespace Business
             }
 
             [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-            public string PDO
+            public string CSW
             {
                 get
                 {
-                    return this.PDOField;
+                    return this.CSWField;
                 }
                 set
                 {
-                    this.PDOField = value;
+                    this.CSWField = value;
                 }
             }
+
+            [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+            public string ISD
+            {
+                get
+                {
+                    return this.ISDField;
+                }
+                set
+                {
+                    this.ISDField = value;
+                }
+            }
+
+
+            [System.Xml.Serialization.XmlElementAttribute("BANCO", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+            public BANCO[] BNC
+            {
+                get
+                {
+                    return this.BNCField;
+                }
+                set
+                {
+                    this.BNCField = value;
+                }
+            }
+        }
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+        [System.SerializableAttribute()]
+        [System.Diagnostics.DebuggerStepThroughAttribute()]
+        [System.ComponentModel.DesignerCategoryAttribute("code")]
+        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+        [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+        public partial class BANCO
+        {
+            private string IDOField;
+            private string COBField;
+            private string PDOField;
+            private string CATField;
+            private string CCTField;
 
             [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
             public string IDO
@@ -3713,7 +3787,18 @@ namespace Business
                     this.COBField = value;
                 }
             }
-
+            [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+            public string PDO
+            {
+                get
+                {
+                    return this.PDOField;
+                }
+                set
+                {
+                    this.PDOField = value;
+                }
+            }
             [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
             public string CAT
             {
