@@ -32,6 +32,8 @@ namespace Business
         public String CAT { get; set; }
         public String CCT { get; set; }
         public String CDR { get; set; }
+        public String CSW { get; set; }
+        public Int32? ISD { get; set; }
         public DateTime? FCT { get; set; }
         public Int32? TRX { get; set; }
         public Int32? TDE { get; set; }
@@ -39,6 +41,8 @@ namespace Business
         public Int32? TEF { get; set; }
         public Int32? TCH { get; set; }
         public Int32? TVT { get; set; }
+
+
 
         public List<UAFTRANSACCION> Listar(DateTime fcorte, string tid, string ide, string nco)
         {
@@ -72,7 +76,9 @@ namespace Business
                 query.Append(" CAT, ");
                 query.Append(" CCT, ");
                 query.Append(" CDR, ");
-                query.Append(" FCT ");
+                query.Append(" FCT, ");
+                query.Append(" CSW, ");
+                query.Append(" ISD ");
                 query.Append(" FROM TRANSACCIONES_UAF_XML@SIFCO ");
                 query.Append(" WHERE CODCOMPANIA = 1 ");
                 query.Append(" AND FCT = :FCT ");
@@ -122,6 +128,8 @@ namespace Business
                             CAT = reader["CAT"].ToString(),
                             CCT = reader["CCT"].ToString(),
                             CDR = reader["CDR"].ToString(),
+                            CSW = reader["CSW"].ToString(),//consultar RM
+                            ISD = Util.ConvertirNumero(reader["ISD"].ToString()),//consultar RM
                             FCT = Util.ConvertirFecha(reader["FCT"].ToString())
                         });
                     }

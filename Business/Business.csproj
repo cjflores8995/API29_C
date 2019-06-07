@@ -45,9 +45,9 @@
     <Reference Include="DiffieHellman">
       <HintPath>..\..\..\Users\cjflores\Desktop\DependenciaS29\Dependencias\DiffieHellman.dll</HintPath>
     </Reference>
-    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Users\cjflores\Desktop\DocumentFormat.OpenXml.dll</HintPath>
+      <HintPath>..\..\_REFERENCIAS_DLL\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>..\..\..\Users\cjflores\Desktop\DependenciaS29\Dependencias\Ionic.Zip.dll</HintPath>
@@ -103,6 +103,7 @@
     <Compile Include="EntidadesBDD\Core\UAFPRODUCTO.cs" />
     <Compile Include="EntidadesBDD\Core\UAFTRANSACCION.cs" />
     <Compile Include="EntidadesBDD\Core\VCUENTASPERSONA.cs" />
+    <Compile Include="EntidadesBDD\Core\VFACTURACIONELECTRONICA.cs" />
     <Compile Include="EntidadesBDD\Core\VFITOFICINAS.cs" />
     <Compile Include="EntidadesBDD\Core\VNOMINACOMPERSAREAS.cs" />
     <Compile Include="EntidadesBDD\Core\VNOMINACOMPERSCARGOS.cs" />

@@ -35,68 +35,68 @@ namespace Business
 
 
 
-        /*string error = string.Empty;
-        archivoZip = string.Empty;
+            /*string error = string.Empty;
+            archivoZip = string.Empty;
 
-        //Variables de conciliación
-        string codigoEntidad = ConfigurationManager.AppSettings["uafCodigoInstitucion"];
-        DateTime fechaHoraGeneracion = DateTime.Now;
-        double valorTotal = 0;
-        int numeroTransacciones = 0;
-        string cabecera = string.Empty;
-
-
-        #endregion Variables
-
-        try
-        {
+            //Variables de conciliación
+            string codigoEntidad = ConfigurationManager.AppSettings["uafCodigoInstitucion"];
+            DateTime fechaHoraGeneracion = DateTime.Now;
+            double valorTotal = 0;
+            int numeroTransacciones = 0;
+            string cabecera = string.Empty;
 
 
+            #endregion Variables
 
-
-            /*UAFDetalle(finicio, path, out error, out archivoDetalle, out totalClientes, out totalProductos);
-            if (string.IsNullOrEmpty(error) && !string.IsNullOrEmpty(archivoDetalle))
+            try
             {
-                UAFValidacion(finicio, path, archivoDetalle, out archivoValidacion);
-                UAFCabecera(finicio, path, archivoDetalle, totalClientes, totalProductos, out error, out archivoCabecera);
-                if (string.IsNullOrEmpty(error) && !string.IsNullOrEmpty(archivoCabecera))
+
+
+
+
+                /*UAFDetalle(finicio, path, out error, out archivoDetalle, out totalClientes, out totalProductos);
+                if (string.IsNullOrEmpty(error) && !string.IsNullOrEmpty(archivoDetalle))
                 {
-                    archivoZip = "UAF_" + finicio.ToString("yyyyMMdd") + ".zip";
-                    ZipFile zip = new ZipFile();
-                    zip.AddFile(path + archivoDetalle, "");
-                    zip.AddFile(path + archivoCabecera, "");
-                    if (!string.IsNullOrEmpty(archivoValidacion))
-                        zip.AddFile(path + archivoValidacion, "");
-                    zip.Save(path + archivoZip);
+                    UAFValidacion(finicio, path, archivoDetalle, out archivoValidacion);
+                    UAFCabecera(finicio, path, archivoDetalle, totalClientes, totalProductos, out error, out archivoCabecera);
+                    if (string.IsNullOrEmpty(error) && !string.IsNullOrEmpty(archivoCabecera))
+                    {
+                        archivoZip = "UAF_" + finicio.ToString("yyyyMMdd") + ".zip";
+                        ZipFile zip = new ZipFile();
+                        zip.AddFile(path + archivoDetalle, "");
+                        zip.AddFile(path + archivoCabecera, "");
+                        if (!string.IsNullOrEmpty(archivoValidacion))
+                            zip.AddFile(path + archivoValidacion, "");
+                        zip.Save(path + archivoZip);
 
-                    resp.CError = "000";
-                    resp.DError = "ESTRUCTURA GENERADA CORRECTAMENTE";
-                }
-            }*/
-
-
-
-
-
-        /*
-            string cabecera = String.Format("{0}_{1}_{2}", "1", "2", "3");
+                        resp.CError = "000";
+                        resp.DError = "ESTRUCTURA GENERADA CORRECTAMENTE";
+                    }
+                }*/
 
 
-            System.IO.File.WriteAllLines(path + "IN_1122_" + ffin.ToString("yyyyMMdd") + ".dat", cabecera);
 
 
-            resp.CError = "000";
-            resp.DError = "ESTRUCTURA GENERADA CORRECTAMENTE";
 
-        }
-        catch (Exception ex)
-        {
-            resp.CError = "999";
-            resp.DError = "ERROR EN SISTEMA: " + Util.ReturnExceptionString(ex);
-            Logging.EscribirLog(MethodBase.GetCurrentMethod().DeclaringType + "::" + MethodBase.GetCurrentMethod().Name + " ", ex, "ERR");
-        }
-        return resp;
-    }*/
+            /*
+                string cabecera = String.Format("{0}_{1}_{2}", "1", "2", "3");
+
+
+                System.IO.File.WriteAllLines(path + "IN_1122_" + ffin.ToString("yyyyMMdd") + ".dat", cabecera);
+
+
+                resp.CError = "000";
+                resp.DError = "ESTRUCTURA GENERADA CORRECTAMENTE";
+
+            }
+            catch (Exception ex)
+            {
+                resp.CError = "999";
+                resp.DError = "ERROR EN SISTEMA: " + Util.ReturnExceptionString(ex);
+                Logging.EscribirLog(MethodBase.GetCurrentMethod().DeclaringType + "::" + MethodBase.GetCurrentMethod().Name + " ", ex, "ERR");
+            }
+            return resp;
+        }*/
 
 
         public CanalRespuesta GeneraUAF(DateTime fcorte, string path, out string archivoZip)
@@ -209,7 +209,7 @@ namespace Business
                                         uaf.CLI[x].PRO[y].TRX[z].VVT = trx.VVT.Value.ToString();
                                         uaf.CLI[x].PRO[y].TRX[z].MND = trx.MND;
                                         uaf.CLI[x].PRO[y].TRX[z].TTR = trx.TTR;
-                                        uaf.CLI[x].PRO[y].TRX[z].NOB = trx.NOB;
+                                        uaf.CLI[x].PRO[y].TRX[z].NOB = trx.NOB;                                        
                                         uaf.CLI[x].PRO[y].TRX[z].CSW = trx.CSW;
                                         uaf.CLI[x].PRO[y].TRX[z].ISD = trx.ISD.Value.ToString();
 
@@ -1540,7 +1540,7 @@ namespace Business
                         }
                         #endregion armaEstructura
                         break;
-                        #endregion F01
+                    #endregion F01
                 }
                 #endregion ProcesaEstructura
                 #region GuardaEstructura
@@ -3707,7 +3707,7 @@ namespace Business
                     this.NOBField = value;
                 }
             }
-
+            
             [System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
             public string CSW
             {
@@ -3733,7 +3733,7 @@ namespace Business
                     this.ISDField = value;
                 }
             }
-
+                
 
             [System.Xml.Serialization.XmlElementAttribute("BANCO", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
             public BANCO[] BNC
