@@ -8,6 +8,6 @@ namespace Business
 {
     public interface IWebEstructurasConciliacion
     {
-        string GeneraEstructuraConciliacion();
+        CanalRespuesta GeneraEstructuraConciliacion();
     }
 }

@@ -152,7 +152,10 @@
     <Compile Include="Logic\BthPos\RetentionMethods.cs" />
     <Compile Include="Logic\BthPos\StructureFiles.cs" />
     <Compile Include="Logic\BthProcesos.cs" />
+    <Compile Include="Logic\IWebEstructurasConciliacion.cs" />
+    <Compile Include="Logic\LoadWebMessages.cs" />
     <Compile Include="Logic\WebCosede.cs" />
+    <Compile Include="Logic\WebEstructurasConciliacion.cs" />
     <Compile Include="Logic\WebFacturacion.cs" />
     <Compile Include="Logic\WebPos.cs" />
     <Compile Include="Logic\WebProcesos.cs" />
