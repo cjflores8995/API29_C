@@ -8,6 +8,6 @@ namespace Business
 {
     public interface IWebEstructurasConciliacion
     {
-        CanalRespuesta GeneraEstructuraConciliacion();
+        CanalRespuesta GeneraEstructuraConciliacion(DateTime fechaInicio, DateTime fechaFin);
     }
 }

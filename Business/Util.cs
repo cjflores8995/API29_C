@@ -706,6 +706,28 @@ namespace Business
             //return result;
         }
 
+        /// <summary>
+        /// Recibe la fecha actual y la convierte en un strinf con el formato yyyyMMdd
+        /// <developer>Carlos Flores</developer>
+        /// </summary>
+        /// <param name="FECHA"></param>
+        /// <returns></returns>
+        public static string ConvertToYearMonthDay(DateTime FECHA)
+        {
+            string FECHA_RETORNO = string.Empty;
+
+            try
+            {
+                FECHA_RETORNO = FECHA.ToString("yyyyMMdd");
+
+            } catch(Exception ex)
+            {
+                FECHA_RETORNO = ex.Message.ToUpper().ToString();
+            }
+
+            return FECHA_RETORNO;
+        }
+
         public static bool ValidaFechas(string fecha)
         {
             bool isDate = true;

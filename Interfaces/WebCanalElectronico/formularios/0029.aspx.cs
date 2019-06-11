@@ -120,7 +120,13 @@ public partial class formularios_0029 : System.Web.UI.Page
                 //Thread.Sleep(5000);
                 //respuesta = est.GeneraConciliacion(Convert.ToDateTime(txtFechaInicio.Text), Convert.ToDateTime(txtFechaFin.Text), path, out nombreZip);
 
-                respuesta = new WebEstructurasConciliacion().GeneraEstructuraConciliacion();
+                DateTime FECHA_INICIO_VAR = Convert.ToDateTime(txtFechaInicio.Text.ToString());
+                DateTime FECHA_FIN_VAR = Convert.ToDateTime(txtFechaFin.Text.ToString());
+
+
+
+
+                respuesta = new WebEstructurasConciliacion().GeneraEstructuraConciliacion(FECHA_INICIO_VAR, FECHA_FIN_VAR);
 
                 duracion.Value.Stop();
                 totalDuracion = duracion.Value.Elapsed;

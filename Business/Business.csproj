@@ -102,6 +102,7 @@
     <Compile Include="EntidadesBDD\Core\UAFCLIENTE.cs" />
     <Compile Include="EntidadesBDD\Core\UAFPRODUCTO.cs" />
     <Compile Include="EntidadesBDD\Core\UAFTRANSACCION.cs" />
+    <Compile Include="EntidadesBDD\Core\VCONCILIACIONFACILITO.cs" />
     <Compile Include="EntidadesBDD\Core\VCUENTASPERSONA.cs" />
     <Compile Include="EntidadesBDD\Core\VFACTURACIONELECTRONICA.cs" />
     <Compile Include="EntidadesBDD\Core\VFITOFICINAS.cs" />
@@ -153,7 +154,7 @@
     <Compile Include="Logic\BthPos\StructureFiles.cs" />
     <Compile Include="Logic\BthProcesos.cs" />
     <Compile Include="Logic\IWebEstructurasConciliacion.cs" />
-    <Compile Include="Logic\LoadWebMessages.cs" />
+    <Compile Include="Logic\LoadPropertiesConfig.cs" />
     <Compile Include="Logic\WebCosede.cs" />
     <Compile Include="Logic\WebEstructurasConciliacion.cs" />
     <Compile Include="Logic\WebFacturacion.cs" />
