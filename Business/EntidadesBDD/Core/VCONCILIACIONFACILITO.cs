@@ -21,8 +21,8 @@ namespace Business
         public string TIPO { get; set; }
         public string SUBTIPO { get; set; }
         public DateTime FECHAHORATRANSACCION { get; set; }
-        public double VALOR { get; set; }
-        public double COMISIONTOTAL { get; set; }
+        public decimal VALOR { get; set; }
+        public decimal COMISIONTOTAL { get; set; }
         #endregion PROPIEDADES
 
         #region METODOS
@@ -54,8 +54,6 @@ namespace Business
                 query.Append(" FROM VCONCILIACIONFACILITO ");
                 query.Append(" WHERE 1 = 1 ");
                 query.Append(" AND FCONTABLE BETWEEN :FDESDE AND :FHASTA ");
-
-                //query.Append(" SELECT * FROM FROM VCONCILIACIONFACILITO  ");// WHERE FCONTABLE BETWEEN :FDESDE AND :FHASTA ");
 
                 comando.CommandType = CommandType.Text;
                 comando.CommandText = query.ToString();
@@ -90,8 +88,8 @@ namespace Business
                             TIPO = reader["TIPO"].ToString(),
                             SUBTIPO = reader["SUBTIPO"].ToString(),
                             FECHAHORATRANSACCION = Convert.ToDateTime(reader["FECHAHORATRANSACCION"]),
-                            VALOR = Convert.ToDouble(reader["VALOR"].ToString()),
-                            COMISIONTOTAL = Convert.ToDouble(reader["COMISIONTOTAL"].ToString())
+                            VALOR = Convert.ToDecimal(reader["VALOR"].ToString()),
+                            COMISIONTOTAL = Convert.ToDecimal(reader["COMISIONTOTAL"].ToString())
                         });
                     }
                 }

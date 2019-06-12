@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Threading;
 using System.Web;
@@ -13,6 +15,8 @@ using System.Web.UI.WebControls;
 
 public partial class formularios_0029 : System.Web.UI.Page
 {
+    LoadPropertiesConfig p = new LoadPropertiesConfig();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         LiteralControl lcControl = new LiteralControl();
@@ -96,7 +100,6 @@ public partial class formularios_0029 : System.Web.UI.Page
         string path = string.Empty;
         string archivo = string.Empty;
         string rutaArchivo = string.Empty;
-        string nombreZip = string.Empty;
         string rutaTemporal = string.Empty;
         string rutaArchivoTmp = string.Empty;
         string tiempo = string.Empty;
@@ -108,24 +111,17 @@ public partial class formularios_0029 : System.Web.UI.Page
         {
             if (txtFechaInicio.Text != "" && txtFechaFin.Text != "")
             {
-                //ScriptManager.RegisterStartupScript(this.panelformulario, GetType(), "alerta", Util.MostarAlertaFormularios("", "HOLA", "WR"), true);
-
                 duracion = new ThreadLocal<Stopwatch>(() => new Stopwatch());
                 duracion.Value.Reset();
                 duracion.Value.Start();
 
-                path = ConfigurationManager.AppSettings["pathConciliacion"].Trim().ToString();// + string.Format(ConfigurationManager.AppSettings["pathArchivosEstructuras"].Trim(), "UAF", DateTime.Now.ToString("yyyyMMddHHmmss"));
+                path = ConfigurationManager.AppSettings["pathConciliacion"].Trim().ToString();
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
-                //Thread.Sleep(5000);
-                //respuesta = est.GeneraConciliacion(Convert.ToDateTime(txtFechaInicio.Text), Convert.ToDateTime(txtFechaFin.Text), path, out nombreZip);
 
                 DateTime FECHA_INICIO_VAR = Convert.ToDateTime(txtFechaInicio.Text.ToString());
                 DateTime FECHA_FIN_VAR = Convert.ToDateTime(txtFechaFin.Text.ToString());
-
-
-
-
+                
                 respuesta = new WebEstructurasConciliacion().GeneraEstructuraConciliacion(FECHA_INICIO_VAR, FECHA_FIN_VAR);
 
                 duracion.Value.Stop();
@@ -134,21 +130,40 @@ public partial class formularios_0029 : System.Web.UI.Page
 
                 if (respuesta.CError == "000")
                 {
-                    /*rutaTemporal = ConfigurationManager.AppSettings["pathTmp"];
-                    rutaArchivo = path + nombreZip;
-                    rutaArchivoTmp = Server.MapPath(rutaTemporal) + nombreZip;
-                    if (!Directory.Exists(Server.MapPath(rutaTemporal)))
-                        Directory.CreateDirectory(Server.MapPath(rutaTemporal));
-                    File.Copy(rutaArchivo, rutaArchivoTmp, true);
-                    txtFechaInicio.Enabled = false;
-                    btnProcesar.Disabled = true;
-                    btnProcesar.Visible = false;
-                    lnkDescargar.Visible = true;
-                    lnkDescargar.HRef = rutaTemporal + nombreZip;
-                    */
-                    ScriptManager.RegisterStartupScript(this.panelformulario, GetType(), "alerta", Util.MostarAlertaFormularios("", respuesta.DError+"\\nTIEMPO: " + tiempo, "OK"), true);
-                
-            }
+                    string fecha = string.Format("{2}{1}{0}", txtFechaInicio.Text.ToString().Substring(0, 2), txtFechaInicio.Text.ToString().Substring(3, 2),txtFechaInicio.Text.ToString().Substring(6, 4));  // DateTime.ParseExact(txtFechaFin.Text, "yyyyMMdd", CultureInfo.InvariantCulture);
+
+                    archivo = string.Format("{0}_{1}_{2}.{3}",p.VAR_INPUT, p.VAR_CODIGO_ENTIDAD, fecha, p.VAR_FORMATO_CONCILIACION);
+
+                    if(File.Exists(path + archivo))
+                    {
+                        rutaTemporal = ConfigurationManager.AppSettings["pathTmp"];
+                        rutaArchivo = path+archivo;
+                        rutaArchivoTmp = Server.MapPath(rutaTemporal) + archivo;
+                        if (!Directory.Exists(Server.MapPath(rutaTemporal)))
+                            Directory.CreateDirectory(Server.MapPath(rutaTemporal));
+                        File.Copy(rutaArchivo, rutaArchivoTmp, true);
+                        txtFechaInicio.Enabled = false;
+                        txtFechaFin.Enabled = false;
+                        btnProcesar.Disabled = true;
+                        btnProcesar.Visible = true;
+
+                        CanalRespuesta c = new WebEstructurasConciliacion().DownloadFile(path, archivo);
+
+                        respuesta.CError = c.CError;
+                        respuesta.DError = c.DError;
+
+
+                        ScriptManager.RegisterStartupScript(this.panelformulario, GetType(), "alerta", Util.MostarAlertaFormularios("", respuesta.DError + "\\nTIEMPO: " + tiempo, "OK"), true);
+
+                    } else
+                    {
+                        ScriptManager.RegisterStartupScript(this.panelformulario, GetType(), "alerta", Util.MostarAlertaFormularios("", respuesta.DError +"\\nTIEMPO: " + tiempo, "ERROR"), true);
+
+                    }
+                    
+
+
+                }
                 else
                 {
                     ScriptManager.RegisterStartupScript(this.panelformulario, GetType(), "alerta", Util.MostarAlertaFormularios("", respuesta.DError + "\\nTIEMPO: " + tiempo, "ER"), true);

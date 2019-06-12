@@ -18,7 +18,13 @@ namespace Business
         public string VAR_INPUT = string.Empty;
         public string VAR_OUTPUT = string.Empty;
         public string VAR_FORMATO_CONCILIACION = string.Empty;
+        public string VAR_FTP_LIBELULA = string.Empty;
+        public bool GENERA_ESTRUCTUCTURA_LOCAL = false;
+        public string RUTA_FTP_CONCILIACION = string.Empty;
+        public string RUTA_LOCAL_CONCILIACION = string.Empty;
         
+
+
 
 
         public LoadPropertiesConfig()
@@ -32,6 +38,12 @@ namespace Business
             VAR_INPUT = ConfigurationManager.AppSettings["INPUT"];
             VAR_OUTPUT = ConfigurationManager.AppSettings["OUTPUT"];
             VAR_FORMATO_CONCILIACION = ConfigurationManager.AppSettings["FORMATO_CONCILIACION"];
+            VAR_FORMATO_CONCILIACION = ConfigurationManager.AppSettings["FORMATO_CONCILIACION"];
+            VAR_FTP_LIBELULA = ConfigurationManager.AppSettings["ftpConciliacionParametros"];
+            GENERA_ESTRUCTUCTURA_LOCAL = Convert.ToBoolean(ConfigurationManager.AppSettings["GENERA_ESTRUCTURA_LOCAL"]);
+            RUTA_FTP_CONCILIACION = ConfigurationManager.AppSettings["RUTA_FTP_CONCILIACION"];
+            RUTA_LOCAL_CONCILIACION = ConfigurationManager.AppSettings["RUTA_LOCAL_CONCILIACION"];
+            
 
         }
     }

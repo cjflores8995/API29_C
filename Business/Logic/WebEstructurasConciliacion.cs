@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.IO;
+using System.Net;
 
 namespace Business
 {
@@ -27,13 +28,13 @@ namespace Business
             string VAR_FECHA_INICIO = string.Empty;
             string VAR_FECHA_FIN = string.Empty;
             int contador = 0;
-            double VALOR_TOTAL = 0;
+            decimal VALOR_TOTAL = 0;
             string CABECERA_VAR = string.Empty;
 
 
             try
             {
-                Logging.EscribirLog("Inicio de la generacion de la estructura", null, "GEN");
+                //Logging.EscribirLog(string.Format($"[{DateTime.Now}][GEN]=> Inicio de la generacion de la estructura"), null, "GEN");
 
                 VAR_FECHA_INICIO = FECHA_INICIO.ToString("dd/MM/yyyy");
                 VAR_FECHA_FIN = FECHA_FIN.ToString("dd/MM/yyyy");
@@ -58,7 +59,7 @@ namespace Business
                                 VALOR_TOTAL = VALOR_TOTAL + e.VALOR;
                             }
 
-                            CABECERA_VAR = string.Format($"{prop.VAR_CODIGO_ENTIDAD},{DateTime.Now.ToString("yyyyMMdd HH:mm:ss")},{Convert.ToDecimal(VALOR_TOTAL)},{contador}");
+                            CABECERA_VAR = string.Format($"{prop.VAR_CODIGO_ENTIDAD},{DateTime.Now.ToString("yyyyMMdd HH:mm:ss")},{VALOR_TOTAL.ToString().Replace(',', '.')},{contador}");
 
                             file.WriteLine(CABECERA_VAR);
 
@@ -82,6 +83,7 @@ namespace Business
             {
                 respuesta.CError = prop.VAR_MSJ_ERROR;
                 respuesta.DError = string.Format($"{prop.VAR_MSJ_ERROR_DET}: {ex.Message.ToUpper().ToString()}");
+                Logging.EscribirLog(string.Format($"{prop.VAR_MSJ_ERROR_DET}: {ex.Message.ToUpper().ToString()}"), null, "GEN");
             }
 
             return respuesta;
@@ -91,7 +93,7 @@ namespace Business
         private string GenerarLineaRegistro(VCONCILIACIONFACILITO e)
         {
             string resp = string.Empty;
-            resp = string.Format($"{e.REFERENCIA},{e.NUMEROMOVIMIENTO},{e.NUMEROCUENTAORIGEN},{e.NUMEROCUENTADESTINO},{e.CODIGODECLIENTE},{e.ESTADO},{e.TIPO},{e.SUBTIPO},{e.FECHAHORATRANSACCION},{e.VALOR},{e.COMISIONTOTAL}");
+            resp = string.Format($"{e.REFERENCIA},{e.NUMEROMOVIMIENTO},{e.NUMEROCUENTAORIGEN},{e.NUMEROCUENTADESTINO},{e.CODIGODECLIENTE},{e.ESTADO},{e.TIPO},{e.SUBTIPO},{e.FECHAHORATRANSACCION},{e.VALOR.ToString("N2").Replace(',', '.')},{e.COMISIONTOTAL.ToString("N2").Replace(',', '.')}");
             return resp;
         }
 
@@ -121,9 +123,46 @@ namespace Business
             {
                 r.CError = "991";
                 r.DError = string.Format($"{prop.VAR_MSJ_ERROR_DET} {ex.Message.ToUpper().ToString()}");
+                Logging.EscribirLog(string.Format($"[{DateTime.Now}][ERR][WebEstructurasConciliacion(125)]=>{prop.VAR_MSJ_ERROR_DET}: {ex.Message.ToUpper().ToString()}"), null, "GEN");
             }
 
             return r;
+        }
+
+        //copia un archivo entre carpetas y lo descarga
+        public CanalRespuesta DownloadFile(string desde, string fileName)
+        {
+            string conexion = prop.VAR_FTP_LIBELULA;
+            string error = prop.VAR_MSJ_ERROR_DET;
+
+            try
+            {
+
+                Util.UploadSftp(conexion, prop.RUTA_FTP_CONCILIACION, desde, fileName, out error);
+
+                if(prop.GENERA_ESTRUCTUCTURA_LOCAL)
+                {
+                    if (File.Exists(prop.RUTA_LOCAL_CONCILIACION))
+                    {
+                        new WebClient().DownloadFile(desde + fileName, prop.RUTA_LOCAL_CONCILIACION + fileName);
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(prop.RUTA_LOCAL_CONCILIACION);
+                        new WebClient().DownloadFile(desde + fileName, prop.RUTA_LOCAL_CONCILIACION + fileName);
+                    }
+                }
+                
+                respuesta.CError = prop.VAR_MSJ_OK;
+                respuesta.DError = "ESTRUCTURA SFTP ALMACENADA CORRECTAMENTE";
+
+            } catch(Exception ex)
+            {
+                respuesta.CError = prop.VAR_MSJ_OK;
+                respuesta.DError = string.Format($"{prop.VAR_MSJ_ERROR_DET}: {ex.Message.ToUpper().ToString()}");
+            }
+           
+            return respuesta;
         }
     }
 }
