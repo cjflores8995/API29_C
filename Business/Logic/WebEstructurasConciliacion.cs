@@ -34,8 +34,6 @@ namespace Business
 
             try
             {
-                //Logging.EscribirLog(string.Format($"[{DateTime.Now}][GEN]=> Inicio de la generacion de la estructura"), null, "GEN");
-
                 VAR_FECHA_INICIO = FECHA_INICIO.ToString("dd/MM/yyyy");
                 VAR_FECHA_FIN = FECHA_FIN.ToString("dd/MM/yyyy");
 
@@ -134,6 +132,7 @@ namespace Business
         {
             string conexion = prop.VAR_FTP_LIBELULA;
             string error = prop.VAR_MSJ_ERROR_DET;
+
 
             try
             {

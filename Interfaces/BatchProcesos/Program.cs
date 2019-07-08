@@ -111,15 +111,6 @@ namespace BatchProcesos
                     }
                     #endregion ejecuta normal
 
-                    #region ejecuta bloqueos
-                    if (BthProcesos.glbEjecutaBloqueosActiva)
-                    {
-                        timerEjecutaBloqueos = new timer.Timer(BthProcesos.glbEjecutaBloqueosTiempo);
-                        timerEjecutaBloqueos.Enabled = true;
-                        timerEjecutaBloqueos.Elapsed += EjecutaBloqueos;
-                    }
-                    #endregion ejecuta bloqueos
-
                     #region ejecuta recuperacion
                     if (BthProcesos.glbEjecutaRecuperacionActiva)
                     {
