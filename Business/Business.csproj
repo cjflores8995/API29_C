@@ -49,6 +49,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\_REFERENCIAS_DLL\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
+    <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.DataSet.3.6.0\lib\net35\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>..\..\..\Users\cjflores\Desktop\DependenciaS29\Dependencias\Ionic.Zip.dll</HintPath>
     </Reference>
@@ -71,6 +77,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -95,6 +102,7 @@
     <Compile Include="EntidadesBDD\Batch\VBTHCHEQUESERRORES.cs" />
     <Compile Include="EntidadesBDD\Batch\VBTHPROCESOERRORES.cs" />
     <Compile Include="EntidadesBDD\Batch\VBTHTABULADORESUMEN.cs" />
+    <Compile Include="EntidadesBDD\Core\TSPI4DETALLES.cs" />
     <Compile Include="EntidadesBDD\Core\TCUENTABLOQUEOFONDOS.cs" />
     <Compile Include="EntidadesBDD\Core\TCUENTACHEQUESLOCALES.cs" />
     <Compile Include="EntidadesBDD\Core\TLOTEMENSAJESDETALLE.cs" />
@@ -159,6 +167,7 @@
     <Compile Include="Logic\WebEstructuras.cs" />
     <Compile Include="Logic\Facturacion.cs" />
     <Compile Include="Logic\Fitbank.cs" />
+    <Compile Include="Logic\WebProcessSpi.cs" />
     <Compile Include="Logic\WebUsuario.cs" />
     <Compile Include="Logic\Web.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -251,6 +260,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

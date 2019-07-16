@@ -5,6 +5,11 @@
 
 }
 
+function OnlyNumbers(e) {
+    var key = window.Event ? e.which : e.keyCode
+    return (key >= 48 && key <= 57)
+}
+
 function entornoNuevaVentana() {
 
     var height = screen.availHeight - 30;

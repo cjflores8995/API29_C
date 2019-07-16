@@ -21,6 +21,33 @@ namespace Business
 
         public static string key = "ABAD2771878497543F87328C10E399EC";
 
+        //valida que exista u directorio, caso contrario lo crea
+        public static CanalRespuesta ValidateDirectory(string path)
+        {
+            CanalRespuesta resp = new CanalRespuesta();
+
+            try
+            {
+                if (Directory.Exists(path))
+                {
+                    resp.CError = "000";
+                    resp.DError = "Directorio creado correctamente";
+                }
+                else
+                {
+                    Directory.CreateDirectory(path);
+                    resp.CError = "000";
+                    resp.DError = "Directorio creado correctamente";
+                }
+            } catch(Exception ex)
+            {
+                resp.CError = "999";
+                resp.DError = ex.Message.ToUpper();
+            }
+
+            return resp;
+        }
+
         /// <summary>
         /// Convierte la cadena recibida en un SHA256
         /// </summary>
