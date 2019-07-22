@@ -1001,6 +1001,7 @@ namespace Business.Logic.BthPos
                         lafavorita.campo_22 = detalle.NUMEROAPROBACION.Trim().PadLeft(10, '0');
 
                         linea = String.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}{11}{12}{13}{14}{15}{16}{17}{18}{19}{20}{21}", lafavorita.campo_01, lafavorita.campo_02, lafavorita.campo_03, lafavorita.campo_04, lafavorita.campo_05, lafavorita.campo_06, lafavorita.campo_07, lafavorita.campo_08, lafavorita.campo_09, lafavorita.campo_10, lafavorita.campo_11, tarjeta_hash, lafavorita.campo_12, lafavorita.campo_13, lafavorita.campo_14, lafavorita.campo_15, lafavorita.campo_16, lafavorita.campo_17, lafavorita.campo_18, lafavorita.campo_19, lafavorita.campo_20, lafavorita.campo_21, lafavorita.campo_22);
+                        linea = linea + lafavorita.campo_22;
 
                         file.WriteLine(linea);
                         contador++;

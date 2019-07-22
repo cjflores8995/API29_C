@@ -182,6 +182,7 @@ namespace Business.Logic.BthPos
             string montotransaccion = string.Empty;
             string cestado = string.Empty;
             string tarjetaUltimosDigitos = string.Empty;
+            int lengthLine = 0;
 
             error = "OK";
             try
@@ -198,6 +199,8 @@ namespace Business.Logic.BthPos
                     {
                         numeroLinea++;
                         tipo = linea.Substring(0, 1);
+                        lengthLine = linea.Length;
+
                         switch (tipo)
                         {
                             #region detalle
@@ -207,7 +210,7 @@ namespace Business.Logic.BthPos
                             case "2":
                                 #region Campos
 
-                                if (nombreArchivo.Contains(".108"))
+                                if (lengthLine > 128)
                                 {
                                     tarjetaHash = linea.Substring(23, 64).Trim();
                                     tarjetaUltimosDigitos = linea.Substring(188, 4).Trim();
