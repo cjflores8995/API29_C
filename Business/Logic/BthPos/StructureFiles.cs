@@ -985,7 +985,7 @@ namespace Business.Logic.BthPos
                         lafavorita.campo_06 = ("0").PadLeft(14, '0'); //ok
                         lafavorita.campo_07 = Util.DecimalToString(detalle.VALORLIQUIDADO.Value).PadLeft(15, '0') ?? ("0").PadLeft(15, '0'); //ok
                         lafavorita.campo_08 = "0101"; //ok
-                        lafavorita.campo_09 = detalle.FTRANSACCION.Value.ToString("yyyyMMdd").PadLeft(14, '0') ?? ("0").PadRight(14, ' '); //ok
+                        lafavorita.campo_09 = detalle.FTRANSACCION.Value.ToString("yyyyMMdd").PadRight(14, ' ');// ?? ("0").PadRight(14, ' '); //ok
                         lafavorita.campo_10 = "00"; //ok
                         lafavorita.campo_11 = ("1" + detalle.MID.Substring(6, 3)).PadLeft(10, '0'); //ok
                         lafavorita.campo_12 = Util.HashSHA256(detalle.TARJETA);
